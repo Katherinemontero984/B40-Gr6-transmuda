@@ -8,7 +8,8 @@ import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage {
 
-    public LoginPage(){
+    public LoginPage()
+    {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
@@ -24,7 +25,8 @@ public class LoginPage {
     public WebElement submit;
 
 
-    public void login(String userNameStr, String passwordStr) {
+    public void login(String userNameStr, String passwordStr)
+    {
         userName.sendKeys(userNameStr);
         password.sendKeys(passwordStr);
         submit.click();

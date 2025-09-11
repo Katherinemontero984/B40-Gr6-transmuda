@@ -1,65 +1,85 @@
 package com.transmuda.step_definitions;
 
+import com.transmuda.pages.RecurringCalendarEventPage;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
+
+
+import com.transmuda.pages.BasePage;
+import com.transmuda.pages.LoginPage;
+import com.transmuda.pages.RecurringCalendarEventPage;
+import com.transmuda.utilities.ConfigurationReader;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import org.junit.Assert;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.devtools.idealized.Events;
+
+import java.util.Calendar;
 
 public class RecurringCalendarEventStepDefs {
 
-    @Given("User navigates to the {string} section")
-    public void user_navigates_to_the_section(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
 
-    @Given("User opens the {string} page")
-    public void user_opens_the_page(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
-
-    @When("User cliks at the {string} button")
-    public void user_cliks_at_the_button(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
-
-    @Then("User cliks at the {string} input field")
-    public void user_cliks_at_the_input_field(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
-    @Given("User is on the {string} page")
-    public void user_is_on_the_page(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
-    @Then("User has opened the {string} section")
-    public void user_has_opened_the_section(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
-    @Then("The default value of {string} should be {string}")
-    public void the_default_value_of_should_be(String string, String string2) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    @And("User navigates to the module")
+    public void navigateToModule() {
+        RecurringCalendarEventPage calendarPage = new RecurringCalendarEventPage();
+        calendarPage.waitUntilLoaderScreenDisappear();
+        calendarPage.navigateToModule("Activities", "Calendar Events");
     }
 
 
-    @When("User clears the {string} input field")
-    public void user_clears_the_input_field(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    @When("User clicks at the {string} button")
+    public void user_clicks_at_the_button(String buttonName) {
+        RecurringCalendarEventPage calendarPage = new RecurringCalendarEventPage();
+        calendarPage.waitUntilLoaderScreenDisappear();
+        calendarPage.createCalendarEventButton.click();
     }
-    @Then("User clicks anywhere on the page")
-    public void user_clicks_anywhere_on_the_page() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
+    @When("User opens the {string} section")
+    public void user_opens_the_section(String sectionName) {
+        RecurringCalendarEventPage calendarPage = new RecurringCalendarEventPage();
+        calendarPage.waitUntilLoaderScreenDisappear();
+        calendarPage.repeatInputField.click();
     }
+
+    @Then("The default value of Repeat Every should be {string}")
+    public void the_default_value_of_should_be(String expectedValue) {
+        RecurringCalendarEventPage calendarPage = new RecurringCalendarEventPage();
+        calendarPage.waitUntilLoaderScreenDisappear();
+        calendarPage.waitForRepeatEveryField();
+        String actualValue = calendarPage.repeatEveryDaysField.getAttribute("value");
+        Assert.assertEquals(expectedValue, actualValue);
+    }
+
+
+    @And("User clears the Repeat Every input field")
+    public void userClearsTheRepeatEveryInputField() {
+        RecurringCalendarEventPage calendarPage = new RecurringCalendarEventPage();
+        calendarPage.waitUntilLoaderScreenDisappear();
+        calendarPage.waitForRepeatEveryField();
+        calendarPage.repeatEveryDaysField.clear();
+    }
+
+    @And("User clicks anywhere on the page")
+    public void userClicksAnywhereOnThePage() {
+        RecurringCalendarEventPage calendarPage = new RecurringCalendarEventPage();
+        calendarPage.waitUntilLoaderScreenDisappear();
+        calendarPage.justClick.click();
+    }
+
     @Then("The error message {string} should be displayed")
-    public void the_error_message_should_be_displayed(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
+    public void theErrorMessageShouldBeDisplayed(String expectedErrorMessage) {
 
+        RecurringCalendarEventPage calendarPage = new RecurringCalendarEventPage();
+        calendarPage.waitUntilLoaderScreenDisappear();
+String actualErrorMessage = calendarPage.valueBlank.getText();
+Assert.assertEquals(expectedErrorMessage, actualErrorMessage);
+
+
+    }
 }

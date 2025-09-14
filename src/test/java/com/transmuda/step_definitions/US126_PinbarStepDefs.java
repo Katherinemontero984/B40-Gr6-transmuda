@@ -6,7 +6,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 
-public class US03_PinbarStepDefs {
+public class US126_PinbarStepDefs {
 
     PinbarPage pinbarPage = new PinbarPage();
 

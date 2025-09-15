@@ -1,11 +1,11 @@
-@US03
+@US126
 Feature: Transmuda pinbar functionality
   User Story: As a user, I want to learn how to use the pinbar.
 
   Background: User is already on the login page
     Given the user is on the login page
 
-  @US03_AC01_TC01
+  @US126_AC01_TC01
   Scenario Outline: Verify user is able to navigate to "Learn how to use this space" link
     Then the user logged in as "<userType>"
     When the user clicks the "Learn how to use this space" link
@@ -19,7 +19,7 @@ Feature: Transmuda pinbar functionality
       | Driver        |
 
 
-  @US03_AC02_TC01
+  @US126_AC02_TC01
   Scenario Outline: Verify user is able to see an image on the page
     Then the user logged in as "<userType>"
     When the user clicks the "Learn how to use this space" link

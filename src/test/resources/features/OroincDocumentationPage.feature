@@ -1,17 +1,21 @@
+
 Feature: Accessing Oroinc Documentation Page
+  AC: Verify that users access to the Oroinc Documentation page by clicking the question mark icon.
+  The page’s URL is: https://doc.oroinc.com/
 
   Background: User is already on the log in page
+    Given     the user is on the login page
 
-  @wip
+  @US_125
   Scenario Outline: User accesses Oroinc Documentation page
-    Given   user is on the home page
-    When    the user is logged in as "<userType>"
+    When    the user logged in as "<userType>"
     And     user click on the "question mark" icon
-    Then    a new window should open with URL "<https://doc.oroinc.com/>"
+    And     user navigates to oroinc documentation page
+    Then    user will access the documentation page
 
     Examples:
-      | userType      | https://doc.oroinc.com/ |
-      | driver        | https://doc.oroinc.com/ |
-      | sales manager | https://doc.oroinc.com/ |
-      | store manager | https://doc.oroinc.com/ |
+      | userType      |
+      | Driver        |
+      | Sales manager |
+      | Store manager |
 

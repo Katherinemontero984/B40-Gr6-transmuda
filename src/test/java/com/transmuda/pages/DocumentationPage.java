@@ -13,10 +13,7 @@ public class DocumentationPage extends BasePage
     @FindBy(css = "i.fa-question-circle")
     public WebElement questionMarkIcon;
 
-    public void clickQuestionMarkIcon()
-    {
-        questionMarkIcon.click();
-    }
+
 }
 
 

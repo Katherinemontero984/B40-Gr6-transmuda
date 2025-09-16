@@ -15,54 +15,45 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.Dictionary;
+import java.util.List;
 
 public class Documentation_StepDefinitions
 {
+
+    String expectedUrl = "https://doc.oroinc.com/";
+    String expectedTitle = "Welcome to Oro Documentation";
 
     DocumentationPage documentationPage = new DocumentationPage();
 
     String mainWindow;
 
-    @Given("user is on the home page")
-    public void user_is_on_the_home_page()
-    {
-        Driver.getDriver().get(ConfigurationReader.getProperty("url"));
-        BrowserUtils.waitForPageToLoad(5);
-        mainWindow = Driver.getDriver().getWindowHandle(); // Storing the current window
-
-    }
-
-
-    @When("the user is logged in as {string}")
-    public void theUserIsLoggedInAs(String userType)
-    {
-
-    }
-
-
     @And("user click on the {string} icon")
-    public void user_click_on_the_icon(String questionMark)
+    public void userClickOnTheIcon(String arg0)
     {
-        // I'm waiting to click
-        BrowserUtils.waitForClickablility(documentationPage.questionMarkIcon,5).click();
+        BrowserUtils.sleep(5);
+
+        documentationPage.questionMarkIcon.click();
+    }
+
+    @And("user navigates to oroinc documentation page")
+    public void userNavigatesToOroincDocumentationPage()
+    {
+
+        BrowserUtils.switchWindowAndVerify(expectedUrl, "Welcome to Oro Documentation");
     }
 
 
-    @Then("a new window should open with URL {string}")
-    public void aNewWindowShouldOpenWithURL(String expectedUrl)
+    @Then("user will access the documentation page")
+    public void userWillAccessTheDocumentationPage()
     {
-        //waiting for a second window to open
-        BrowserUtils.switchToWindow(mainWindow);
+        BrowserUtils.sleep(3);
 
-        String actual = Driver.getDriver().getCurrentUrl();
-        String expected = "https://doc.oroinc.com/";
+        String expectedUrl = "https://doc.oroinc.com/";
+        String actualUrl = Driver.getDriver().getCurrentUrl();
 
-        Assert.assertEquals(expected, actual);
+        Assert.assertEquals(expectedUrl, actualUrl);
+
     }
-
-
-
-
 
 
 }

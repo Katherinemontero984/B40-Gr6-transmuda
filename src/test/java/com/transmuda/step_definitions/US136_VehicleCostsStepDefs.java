@@ -11,12 +11,19 @@ public class US136_VehicleCostsStepDefs {
 
     US136_VehicleCostsPage vehicleCostsPage = new US136_VehicleCostsPage();
 
+    @When("the user navigates to {string} -> {string}")
+    public void the_user_navigates_to(String tab, String module) {
+        // navigateToModule is inherited from BasePage; our page extends BasePage
+        vehicleCostsPage.navigateToModule(tab, module);
+    }
+
+    // ----- AC1: Verify headers -----
     @Then("the user should see table headers:")
     public void the_user_should_see_table_headers(List<String> expectedHeaders) {
-        // e.g. [TYPE, TOTAL PRICE, DATE]
         Assert.assertEquals("Headers mismatch!", expectedHeaders, vehicleCostsPage.getHeaderTexts());
     }
 
+    // ----- AC2: Master checkbox selects/deselects all on current page -----
     @When("the user checks the master checkbox")
     public void the_user_checks_the_master_checkbox() {
         vehicleCostsPage.checkMaster();

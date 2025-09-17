@@ -1,38 +1,52 @@
 package com.transmuda.pages;
 
+import com.transmuda.utilities.Driver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
+
+import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class US136_VehicleCostsPage extends BasePage {
 
-    // ===== HEADERS =====
-    @FindBy(xpath = "//table//thead//th")
-    public List<WebElement> headerCells;
+    // Top nav
+    @FindBy(xpath = "//span[@class='title title-level-1' and normalize-space()='Fleet']")
+    public WebElement fleetTab;
 
-    @FindBy(xpath = "//table//thead//th[normalize-space()='TYPE']")
+    @FindBy(xpath = "//span[@class='title title-level-2' and normalize-space()='Vehicle Costs']")
+    public WebElement vehicleCostsMenuItem;
+
+    // Grid headers
+    @FindBy(xpath = "//a[@class='grid-header-cell__link']//span[normalize-space()='Type']")
     public WebElement headerType;
 
-    @FindBy(xpath = "//table//thead//th[normalize-space()='TOTAL PRICE']")
+    @FindBy(xpath = "//a[@class='grid-header-cell__link']//span[normalize-space()='Total Price']")
     public WebElement headerTotalPrice;
 
-    @FindBy(xpath = "//table//thead//th[normalize-space()='DATE']")
+    @FindBy(xpath = "//a[@class='grid-header-cell__link']//span[normalize-space()='Date']")
     public WebElement headerDate;
 
-    // ===== CHECKBOXES =====
-    // Master (select-all) checkbox in the header row
-    @FindBy(xpath = "//table//thead//input[@type='checkbox']")
+    // Master + row checkboxes (current page)
+    @FindBy(xpath = "(//table[.//thead])[1]//thead//input[@type='checkbox']")
     public WebElement masterCheckbox;
 
-    // Row checkboxes in the table body (current page)
-    @FindBy(xpath = "//table//tbody//input[@type='checkbox']")
+    @FindBy(xpath = "(//table[.//thead])[1]//tbody//input[@type='checkbox']")
     public List<WebElement> rowCheckboxes;
 
-    // ===== SMALL HELPERS =====
+    // ---- helpers ----
+    public void goToVehicleCosts() {
+        new Actions(Driver.getDriver()).moveToElement(fleetTab).perform();
+        vehicleCostsMenuItem.click();
+    }
+
     public List<String> getHeaderTexts() {
-        return headerCells.stream().map(WebElement::getText).map(String::trim).collect(Collectors.toList());
+        return Arrays.asList(
+                headerType.getText().trim(),
+                headerTotalPrice.getText().trim(),
+                headerDate.getText().trim()
+        );
     }
 
     public void checkMaster() {
@@ -44,10 +58,11 @@ public class US136_VehicleCostsPage extends BasePage {
     }
 
     public boolean allRowsSelected() {
-        return rowCheckboxes.stream().allMatch(WebElement::isSelected);
+        return !rowCheckboxes.isEmpty() && rowCheckboxes.stream().allMatch(WebElement::isSelected);
     }
 
     public boolean allRowsUnselected() {
         return rowCheckboxes.stream().noneMatch(WebElement::isSelected);
     }
 }
+

@@ -18,8 +18,8 @@ public class US124_AccessingMainModules_StepDefs {
 
 //                          Managers
 
-    @Then("sale manager sees {string} in the main modules")
-    public void sale_manager_sees_in_the_main_modules(String expectedInSaleManagerModule) {
+    @Then("sale manager sees these main modules")
+    public void sale_manager_sees_these_main_modules(List<String> expectedInSaleManagerModule) {
 
         BrowserUtils.sleep(2);
         List<WebElement> managerModulesWebElements = Arrays.asList(
@@ -39,11 +39,11 @@ public class US124_AccessingMainModules_StepDefs {
             actualManagerModules.add(eachmodulesWebElement.getText());
         }
 
-        Assert.assertTrue(expectedInSaleManagerModule, actualManagerModules.contains(expectedInSaleManagerModule));
+        Assert.assertEquals(expectedInSaleManagerModule, actualManagerModules);
     }
 
-    @Then("store manager sees {string} in the main modules")
-    public void store_manager_sees_in_the_main_modules(String expectedInStoreManagerModule) {
+    @Then("store manager sees these main modules")
+    public void store_manager_sees_these_main_modules(List<String> expectedInStoreManagerModule) {
 
         BrowserUtils.sleep(2);
         List<WebElement> managerModulesWebElements = Arrays.asList(
@@ -63,14 +63,14 @@ public class US124_AccessingMainModules_StepDefs {
             actualManagerModules.add(eachmodulesWebElement.getText());
         }
 
-        Assert.assertTrue(expectedInStoreManagerModule, actualManagerModules.contains(expectedInStoreManagerModule));
+        Assert.assertEquals(expectedInStoreManagerModule, actualManagerModules);
     }
 
 
 //                          Driver
 
-    @Then("driver sees {string} in the main modules")
-    public void driver_sees_in_the_main_modules(String expectedInDriverModule) {
+    @Then("driver sees these main modules")
+    public void driver_sees_these_main_modules(List<String> expectedInDriverModule) {
 
         BrowserUtils.sleep(2);
         List<WebElement> driverModulesWebElements = Arrays.asList(
@@ -81,12 +81,12 @@ public class US124_AccessingMainModules_StepDefs {
         );
 
         List<String> actualDriverModules = new ArrayList<>();
-
         for (WebElement eachmodulesWebElement : driverModulesWebElements) {
             actualDriverModules.add(eachmodulesWebElement.getText());
         }
 
-        Assert.assertTrue(expectedInDriverModule, actualDriverModules.contains(expectedInDriverModule));
+        Assert.assertEquals(expectedInDriverModule, actualDriverModules);
+
     }
 
 

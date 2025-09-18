@@ -5,12 +5,9 @@ Feature: User I should be able to access all the main modules of the app.
     Given the user is on the login page
 
   @salesManager         # US124_AC01_TC01
-  Scenario Outline: User can see their main modules when on home page
+  Scenario: Sales Manager can see their main modules when on home page
     Given the user logged in as "Sales Manager"
-    Then sale manager sees "<expectedModules>" in the main modules
-
-    Examples:
-      | expectedModules    |
+    Then sale manager sees these main modules
       | Dashboards         |
       | Fleet              |
       | Customers          |
@@ -22,12 +19,9 @@ Feature: User I should be able to access all the main modules of the app.
 
 
   @storeManager         # US124_AC01_TC02
-  Scenario Outline: User can see their main modules when on home page
+  Scenario: Store Manager can see their main modules when on home page
     Given the user logged in as "Store Manager"
-    Then store manager sees "<expectedModules>" in the main modules
-
-    Examples:
-      | expectedModules    |
+    Then store manager sees these main modules
       | Dashboards         |
       | Fleet              |
       | Customers          |
@@ -39,12 +33,9 @@ Feature: User I should be able to access all the main modules of the app.
 
 
   @driver              # US124_AC02_TC01
-  Scenario Outline: Driver can see their main modules when on home page
+  Scenario: Driver can see their main modules when on home page
     Given the user logged in as "Driver"
-    Then driver sees "<expectedModules>" in the main modules
-
-    Examples:
-      | expectedModules |
+    Then driver sees these main modules
       | Fleet           |
       | Customers       |
       | Activities      |

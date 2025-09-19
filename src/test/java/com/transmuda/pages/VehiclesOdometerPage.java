@@ -3,7 +3,7 @@ package com.transmuda.pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class US135_VehiclesOdometerPage {
+public class VehiclesOdometerPage {
 
 
     @FindBy(xpath = "(//div[@class='message'])[2]")

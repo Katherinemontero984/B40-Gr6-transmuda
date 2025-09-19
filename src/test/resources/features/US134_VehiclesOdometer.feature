@@ -12,5 +12,5 @@ Feature: View Car Odometer Info
 
     Examples:
       | username        | password    |
-      | salesmanager25| UserUser123 |
-      | storemanager25  | UserUser123 |
+      | salesmanager115| UserUser123 |
+      | storemanager91  | UserUser123 |

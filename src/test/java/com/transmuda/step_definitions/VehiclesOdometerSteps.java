@@ -1,7 +1,7 @@
 package com.transmuda.step_definitions;
 
 import com.transmuda.pages.LoginPage;
-import com.transmuda.pages.US135_VehiclesOdometerPage;
+import com.transmuda.pages.VehiclesOdometerPage;
 import com.transmuda.utilities.ConfigurationReader;
 import com.transmuda.utilities.Driver;
 import io.cucumber.java.en.Given;
@@ -9,10 +9,10 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 
-public class US135_VehiclesOdometerSteps {
+public class VehiclesOdometerSteps {
 
 
-    US135_VehiclesOdometerPage vehiclesOdometerPage = new US135_VehiclesOdometerPage() ;
+    VehiclesOdometerPage vehiclesOdometerPage = new VehiclesOdometerPage() ;
     LoginPage loginPage = new LoginPage();
 
 

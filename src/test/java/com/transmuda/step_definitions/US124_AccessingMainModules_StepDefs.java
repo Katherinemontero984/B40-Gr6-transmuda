@@ -2,12 +2,12 @@ package com.transmuda.step_definitions;
 
 import com.transmuda.pages.AccessingMainModulesPage;
 import com.transmuda.utilities.BrowserUtils;
-import com.transmuda.utilities.Driver;
+
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 
-import java.util.ArrayList;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -33,11 +33,7 @@ public class US124_AccessingMainModules_StepDefs {
                 accessingMainModulesPage.managerSystemModule
         );
 
-        List<String> actualManagerModules = new ArrayList<>();
-
-        for (WebElement eachmodulesWebElement : managerModulesWebElements) {
-            actualManagerModules.add(eachmodulesWebElement.getText());
-        }
+        List<String> actualManagerModules = BrowserUtils.getElementsText(managerModulesWebElements);
 
         Assert.assertEquals(expectedInSaleManagerModule, actualManagerModules);
     }
@@ -57,11 +53,7 @@ public class US124_AccessingMainModules_StepDefs {
                 accessingMainModulesPage.managerSystemModule
         );
 
-        List<String> actualManagerModules = new ArrayList<>();
-
-        for (WebElement eachmodulesWebElement : managerModulesWebElements) {
-            actualManagerModules.add(eachmodulesWebElement.getText());
-        }
+        List<String> actualManagerModules = BrowserUtils.getElementsText(managerModulesWebElements);
 
         Assert.assertEquals(expectedInStoreManagerModule, actualManagerModules);
     }
@@ -80,10 +72,7 @@ public class US124_AccessingMainModules_StepDefs {
                 accessingMainModulesPage.driverSystemModule
         );
 
-        List<String> actualDriverModules = new ArrayList<>();
-        for (WebElement eachmodulesWebElement : driverModulesWebElements) {
-            actualDriverModules.add(eachmodulesWebElement.getText());
-        }
+        List<String> actualDriverModules = BrowserUtils.getElementsText(driverModulesWebElements);
 
         Assert.assertEquals(expectedInDriverModule, actualDriverModules);
 
